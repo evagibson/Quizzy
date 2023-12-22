@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}search results{% endblock %}
+{% load static %}
+{% block content %}
+    <br>
+    <br><br><br>
+    <main id="main">
+    <center>
+    {% if searched %}
+        <h1>You searched for {{ searched }}</h1>
+        <br>
+        {% for quiz in quizzes %}
+            <div class="col pt-2">
+                <div class="card" style="width: 380px">
+        {#              <img src="..." class="card-img-top" alt="...">#}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ quiz.title }}</h5>
+                    <p class="card-text">{{ quiz.description }}</p>
+                    <h5 class="card-title">{{ quiz.number_of_questions }} Questions</h5>
+                    <h5 class="card-title">{{ quiz.time }} Seconds</h5>
+                    <div class="text-end">
+                        <a href="/{{ quiz.id }}" class="btn btn-success">Attempt Quiz</a>
+                        <a href="add_question/{{ quiz.id }}" class="btn btn-success">Add Questions</a>
+                        <div class="text-end dropdown dropup" style="display: inline-block;">
+                            <a href="" class="nav-link p-1" role="button" data-bs-toggle="dropdown"><svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0
+                             128
+                            512"><!--! Font Awesome Free 6.4.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+{#                              <li><a class="dropdown-item" href="#">Edit</a></li>#}
+                              <li><a class="dropdown-item" href="/delete/{{ quiz.id }}">Delete</a></li>
+{#                              <li><a class="dropdown-item" href="questions/{{ quiz.id }}">See questions</a></li>#}
+{#                                <li><a class="dropdown-item" href="#">Update</a></li>#}
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
+    {% else %}
+        <h1>Hey you forgot to search for a Quiz</h1>
+    {% endif %}
+    </center>
+    </main>
+{% endblock %}

@@ -1,0 +1,120 @@
+<head>
+    {% load static %}
+    {% load socialaccount %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+</head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<div class="container">
+<br>
+<hr>
+
+<div class="card bg-light mx-auto p-2" style="width: 500px">
+<article class="card-body mx-auto" style="max-width: 500px;">
+	<h4 class="card-title mt-3 text-center">Create Account</h4>
+	<div class="social-line text-center">
+          <a href="{% provider_login_url 'facebook'  %}" class="btn btn-neutral btn-facebook btn-icon btn-round btn-lg">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="{% provider_login_url 'github' %}" class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="{% provider_login_url 'google' %}" class="btn btn-neutral btn-google btn-icon btn-round btn-lg">
+            <i class="fab fa-google"></i>
+          </a>
+    </div>
+{#	<p class="divider-text text-center">#}
+{#        <span class="bg-light">OR</span>#}
+{#    </p>#}
+
+    <br><br>
+	<form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="first_name" class="form-control" placeholder="firstname" type="text">
+    </div>
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="last_name" class="form-control" placeholder="lastname" type="text">
+    </div>
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+         </div>
+        <input name="username" class="form-control" placeholder="username" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="email" class="form-control" placeholder="Email address" type="email">
+    </div> <!-- form-group// -->
+{#    <div class="form-group input-group">#}
+{#    	<div class="input-group-prepend">#}
+{#		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>#}
+{#		</div>#}
+{#		<select class="custom-select" style="max-width: 120px;">#}
+{#		    <option selected="">+254</option>#}
+{#		    <option selected="">+971</option>#}
+{#		    <option value="1">+972</option>#}
+{#		    <option value="2">+198</option>#}
+{#		    <option value="3">+701</option>#}
+{#		</select>#}
+{#    	<input name="" class="form-control" placeholder="Phone number" type="text">#}
+{#    </div>#}
+        <!-- form-group// -->
+{#    <div class="form-group input-group">#}
+{#    	<div class="input-group-prepend">#}
+{#		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>#}
+{#		</div>#}
+{#		<select class="form-control">#}
+{#			<option selected=""> Select job type</option>#}
+{#			<option>Designer</option>#}
+{#			<option>Manager</option>#}
+{#			<option>Accaunting</option>#}
+{#		</select>#}
+{#	</div> <!-- form-group end.// -->#}
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="password" class="form-control" placeholder="Create password" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="confirm_password" class="form-control" placeholder="Confirm password" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+    </div> <!-- form-group// -->
+    <p class="text-center">Have an account? <a href="{% url 'login' %}">Log In</a> </p>
+
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div>
+<!--container end.//-->
+
+<br><br>
+{#<article class="bg-secondary mb-3">#}
+{#<div class="card-body text-center">#}
+{#    <h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>#}
+{#<p class="h5 text-white">Components and templates  <br> for Ecommerce, marketplace, booking websites#}
+{#and product landing pages</p>   <br>#}
+{#<p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com#}
+{# <i class="fa fa-window-restore "></i></a></p>#}
+{#</div>#}
+{#<br><br>#}
+{#</article>#}

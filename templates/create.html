@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Create Quiz{% endblock %}
+{% block content %}
+{% load static %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Create Quiz</h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section class="intro">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <div class="card" style="border-radius: 1rem;">
+                  <div class="card-body p-5">
+                    <form method="post" action="/create/">
+                        {% csrf_token %}
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Title</label>
+                            </div>
+                            <div class="col" >
+                                {{ form.title }}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="description">Description</label>
+                            </div>
+                            <div class="col">
+                                {{ form.description }}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="price">Number of Questions</label>
+                            </div>
+                            <div class="col">
+                                {{ form.number_of_questions }}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="origin">Time</label>
+                            </div>
+                            <div class="col">
+                                {{ form.time }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                    {#        <div class="col">#}
+                    {#            <a href="{% url 'show' %}" class="btn btn-warning">See Products</a>#}
+                    {#        </div>#}
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+{% endblock %}

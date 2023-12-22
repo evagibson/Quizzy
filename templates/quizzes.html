@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Quizzes{% endblock %}
+{% load static %}
+{% block content %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>
+            <form class="d-flex" method="post" action="{% url 'search-quizzes' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search QUiz" name="searched">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto p-3">
+            {% for quiz in quizs %}
+              <div class="col pt-2">
+                <div class="card" style="width: 380px">
+        {#              <img src="..." class="card-img-top" alt="...">#}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ quiz.title }}</h5>
+                    <p class="card-text">{{ quiz.description }}</p>
+                    <h5 class="card-title">{{ quiz.number_of_questions }} Questions</h5>
+                    <h5 class="card-title">{{ quiz.time }} Seconds</h5>
+                    <div class="text-end">
+                        <a href="/{{ quiz.id }}" class="btn btn-success">Attempt Quiz</a>
+                        <a href="add_question/{{ quiz.id }}" class="btn btn-success">Add Questions</a>
+                        <div class="text-end dropdown dropup" style="display: inline-block;">
+                            <a href="" class="nav-link p-1" role="button" data-bs-toggle="dropdown"><svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0
+                             128
+                            512"><!--! Font Awesome Free 6.4.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+{#                              <li><a class="dropdown-item" href="#">Edit</a></li>#}
+                              <li><a class="dropdown-item" href="/delete/{{ quiz.id }}">Delete</a></li>
+{#                              <li><a class="dropdown-item" href="questions/{{ quiz.id }}">See questions</a></li>#}
+{#                                <li><a class="dropdown-item" href="#">Update</a></li>#}
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

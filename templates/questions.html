@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+    <br>
+    <br>
+     <section class="intro">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <div class="card" style="border-radius: 1rem;">
+                  <div class="card-body p-5">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Question</th>
+                            <th>Quiz</th>
+                            <th>Delete</th>
+                          </tr>
+                        </thead>
+                          {% for question in questions %}
+                            <tr>
+                              <td>{{question.qn}}</td>
+                              <td>{{question.quiz}}</td>
+                              <td><a href="/add_options/{{question.id}}/" class="btn btn-danger">Add Options</a></td>
+                {#              <td><a href="{{ quiz.id }}/questions/add_options/{{ question.id }}" class="btn btn-danger">Add#}
+                {#                  Options</a></td>#}
+                            </tr>
+                          {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </section>
+
+
+{% endblock %}
